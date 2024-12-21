@@ -3,11 +3,34 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class AsyncLoader : MonoBehaviour {
+public class _SceneLoader : MonoBehaviour {
+
     private Slider loadingSlider;
     private bool m_loading = false;
 
+    public static _SceneLoader Instance {
+        get {
+            if (_instance == null) {
+                GameObject loaderObject = new GameObject("_SceneLoader");
+                _instance = loaderObject.AddComponent<_SceneLoader>();
+                DontDestroyOnLoad(loaderObject);
+            }
+            return _instance;
+        }
+    }
+
+    private static _SceneLoader _instance;
+
+    private void Awake() {
+        if (_instance == null) {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this) { Destroy(gameObject); }
+    }
+
     public void LoadLvl(_SceneAsset lvl) {
+        // ree
         Debug.Assert(!m_loading, "[ FAIL ] Loading already in progress");
         if (m_loading) { return; }
         StartCoroutine(loadLoadingScene(lvl));
@@ -38,5 +61,7 @@ public class AsyncLoader : MonoBehaviour {
             if (loadingSlider != null) { loadingSlider.value = progressValue; }
             yield return null;
         }
+        m_loading = false;
     }
+    
 }
