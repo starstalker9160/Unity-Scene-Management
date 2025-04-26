@@ -30,7 +30,6 @@ public class _SceneLoader : MonoBehaviour {
     }
 
     public void LoadLvl(_SceneAsset lvl) {
-        // ree
         Debug.Assert(!m_loading, "[ FAIL ] Loading already in progress");
         if (m_loading) { return; }
         StartCoroutine(loadLoadingScene(lvl));
