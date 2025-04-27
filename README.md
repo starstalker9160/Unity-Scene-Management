@@ -7,10 +7,10 @@
 
 Your file structure should look like this:
 <pre> ``` Assets/
-		└── Scripts/
-			└── Editor/
-				├── Scene Management
-				└── Project.Editor.asmdef ``` </pre>
+	└── Scripts/
+		└── Editor/
+			├── Scene Management
+			└── Project.Editor.asmdef ``` </pre>
 
 ## Usage
 
