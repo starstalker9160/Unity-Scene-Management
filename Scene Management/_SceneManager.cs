@@ -31,6 +31,10 @@ public class _SceneManager : MonoBehaviour {
         else if (_instance != this) { Destroy(gameObject); }
     }
 
+    /// <summary>
+    /// Load scene in background
+    /// </summary>
+    /// <param name="scene">The target scene</param>
     public IEnumerator loadInBG(_SceneAsset trgt) {
         if (currentScene == trgt || loadedScenes.Contains(trgt)) { yield break; }
         AsyncOperation loadOpp = SceneManager.LoadSceneAsync(trgt.sceneName, LoadSceneMode.Additive);
@@ -39,6 +43,10 @@ public class _SceneManager : MonoBehaviour {
         Console.WriteLine("[  OK  ] Scene loaded in background");
     }
 
+    /// <summary>
+    /// Switch to a scene, regardless if or not its loaded
+    /// </summary>
+    /// <param name="scene">The target scene</param>
     private bool switching = false;
     public void switchScene(_SceneAsset trgt) {
         if (currentScene == trgt || switching) { return; }
@@ -52,11 +60,12 @@ public class _SceneManager : MonoBehaviour {
         switching = false;
     }
 
+    /// <summary>
+    /// Checks if a scene is currently loaded
+    /// </summary>
+    /// <param name="scene">The scene to check for being loaded</param>
+    /// <returns>True if the scene is loaded, otherwise false</returns>
     public bool isSceneLoaded(_SceneAsset scene) {
-        for (int i = 0; i < SceneManager.sceneCount; i++) {
-            Scene s = SceneManager.GetSceneAt(i);
-            if (s.name == scene.sceneName) { return true; }
-        }
-        return false;
+        return loadedScenes.Contains(scene);
     }
 }
