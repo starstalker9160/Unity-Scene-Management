@@ -40,7 +40,7 @@ public class _SceneManager : MonoBehaviour {
         AsyncOperation loadOpp = SceneManager.LoadSceneAsync(trgt.sceneName, LoadSceneMode.Additive);
         while (!loadOpp.isDone) { yield return null; }
         loadedScenes.Add(trgt);
-        Console.WriteLine("[  OK  ] Scene loaded in background");
+        Debug.Log("[  OK  ] Scene loaded in background");
     }
 
     /// <summary>
