@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
 public class _SceneManager : MonoBehaviour {
-        
     public int memoryBuffer = 6;
     public _SceneAsset currentScene;
     public HashSet<_SceneAsset> loadedScenes = new HashSet<_SceneAsset>();

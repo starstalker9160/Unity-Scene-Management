@@ -4,7 +4,6 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class _SceneLoader : MonoBehaviour {
-
     private Slider loadingSlider;
     private bool m_loading = false;
 
